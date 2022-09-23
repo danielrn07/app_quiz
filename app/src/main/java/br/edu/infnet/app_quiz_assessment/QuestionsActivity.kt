@@ -8,6 +8,9 @@ class QuestionsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuestionsBinding
 
+    var cont = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionsBinding.inflate(layoutInflater)

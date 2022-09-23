@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, QuestionsActivity::class.java)
             startActivity(intent)
         }
+
     }
 
 
