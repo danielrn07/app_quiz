@@ -16,9 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
+
         setContentView(view)
 
         setup()
+    }
+
+    companion object {
+        val NOME = "NOME"
     }
 
     private fun setup() {
@@ -31,7 +36,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Por favor, insira seu nome!", Toast.LENGTH_SHORT)
                     .show()
             } else {
+                val nome = binding.inputName.text.toString()
                 val intent = Intent(this, InitialActivity::class.java)
+                intent.putExtra(NOME, nome)
                 startActivity(intent)
             }
         }

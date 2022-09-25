@@ -16,7 +16,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityQuestionsBinding
 
-    var contLife = 3
+    var counterLife = 3
 
     private var currentPosition: Int = 1
     private var questionsList: ArrayList<QuestionsAndOptions>? = null
@@ -35,7 +35,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     private fun setup() {
-        binding.tvTotalLife.text = "0$contLife"
+        binding.tvTotalLife.text = "0$counterLife"
 
         questionsList = Constants.getQuestions()
 
@@ -82,9 +82,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             answerView(selectedOptionPosition, R.drawable.wrong_option)
 
             //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
-            contLife--
-            binding.tvTotalLife.text = "0$contLife"
-            if (contLife == 0){
+            counterLife--
+            binding.tvTotalLife.text = "0$counterLife"
+            if (counterLife == 0){
                 val intent = Intent(this, TryAgainActivity::class.java)
                 startActivity(intent)
             }
