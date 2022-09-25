@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.infnet.app_quiz_assessment.databinding.FragmentQuestion1Binding
 import br.edu.infnet.app_quiz_assessment.databinding.QuestionItemListBinding
-import br.edu.infnet.app_quiz_assessment.models.Question
+import br.edu.infnet.app_quiz_assessment.models.Option
 
-class QuestionAdapter: ListAdapter<Question, QuestionAdapter.ViewHolder>(QuestionDiffCallBack()) {
+class QuestionAdapter: ListAdapter<Option, QuestionAdapter.ViewHolder>(QuestionDiffCallBack()) {
 
-    private var questionsListTest: ArrayList<Question>? = null
+    private var questionsListTest: ArrayList<Option>? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,10 +23,11 @@ class QuestionAdapter: ListAdapter<Question, QuestionAdapter.ViewHolder>(Questio
         holder.bind(item)
     }
 
+
     class ViewHolder private constructor(
         val binding: QuestionItemListBinding
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Question) {
+        fun bind(item: Option) {
             binding.tvOptionOne.text = item.question
 
 
@@ -44,13 +45,13 @@ class QuestionAdapter: ListAdapter<Question, QuestionAdapter.ViewHolder>(Questio
     }
 }
 
-class QuestionDiffCallBack: DiffUtil.ItemCallback<Question>() {
+class QuestionDiffCallBack: DiffUtil.ItemCallback<Option>() {
 
-    override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean {
+    override fun areItemsTheSame(oldItem: Option, newItem: Option): Boolean {
         return oldItem.question == newItem.question
     }
 
-    override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean {
+    override fun areContentsTheSame(oldItem: Option, newItem: Option): Boolean {
         return oldItem == newItem
     }
 }
