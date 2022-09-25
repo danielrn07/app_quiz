@@ -3,6 +3,7 @@ package br.edu.infnet.app_quiz_assessment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityInitialBinding
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityQuestionsBinding
@@ -26,8 +27,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun configureButtons() {
         binding.btnAvancar.setOnClickListener {
-            val intent = Intent(this, InitialActivity::class.java)
-            startActivity(intent)
+            if (binding.inputName.text.toString().isEmpty()) {
+                Toast.makeText(this, "Por favor, insira seu nome!", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                val intent = Intent(this, InitialActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
