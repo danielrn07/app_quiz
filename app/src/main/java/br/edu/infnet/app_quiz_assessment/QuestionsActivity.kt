@@ -120,7 +120,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             questionsList!![currentPosition - 1]
 
         defaultOptionsView()
-        
+
+        binding.tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex+1}"
+        binding.tvCounter.text = "$currentPosition. "
 
         binding.questionContainer2.text = question.pergunta
         binding.tvOption1.text = question.option1
