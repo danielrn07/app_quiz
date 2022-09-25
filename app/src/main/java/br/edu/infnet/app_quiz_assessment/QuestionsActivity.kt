@@ -33,8 +33,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         setup()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setup() {
-        binding.tvTotalLife.text = "$contLife"
+        binding.tvTotalLife.text = "0$contLife"
 
         questionsList = Constants.getQuestions()
 
@@ -71,6 +72,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun checkAnswer() {
         val question = questionsList?.get(currentPosition - 1)
 
@@ -81,7 +83,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
             //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
             contLife--
-            binding.tvTotalLife.text = "$contLife"
+            binding.tvTotalLife.text = "0$contLife"
             if (contLife == 0){
                 val intent = Intent(this, TryAgainActivity::class.java)
                 startActivity(intent)
