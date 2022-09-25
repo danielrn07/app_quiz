@@ -1,5 +1,4 @@
 package br.edu.infnet.app_quiz_assessment
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +19,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
     }
+
 
 
 }

@@ -6,7 +6,7 @@
     app:startDestination="@id/question1Fragment">
     <fragment
         android:id="@+id/question1Fragment"
-        android:name="br.edu.infnet.app_quiz_assessment.Question1Fragment"
+        android:name="br.edu.infnet.app_quiz_assessment.QuestionsFragment"
         android:label="fragment_question1"
-        tools:layout="@layout/fragment_question1" />
+        tools:layout="@layout/fragment_questions" />
 </navigation>

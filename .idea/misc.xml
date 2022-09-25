@@ -3,15 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/correct_option.xml" value="0.233" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/fundo_teste.xml" value="0.233" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.2645" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/ic_question.xml" value="0.233" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/shape_button.xml" value="0.233" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/shape_style.xml" value="0.233" />
+        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/shape_teste_botao.xml" value="0.233" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/style_shape.xml" value="0.233" />
+        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/drawable/wrong_option.xml" value="0.233" />
+        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout-v28/activity_teste.xml" value="0.259375" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/activity_main.xml" value="0.259375" />
-        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/activity_questions.xml" value="0.221875" />
+        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/activity_questions.xml" value="0.259375" />
+        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/activity_questions1.xml" value="0.259375" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/activity_teste.xml" value="0.259375" />
+        <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/custom_dialog.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/fragment_profile.xml" value="0.259375" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/fragment_question1.xml" value="0.259375" />
         <entry key="..\:/Users/pdani/OneDrive/Desktop/Projetos/app_quiz_assessment/app_quiz/app/src/main/res/layout/fragment_question2.xml" value="0.259375" />

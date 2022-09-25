@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Question1Fragment">
+    tools:context=".QuestionsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/quiz"
@@ -12,8 +12,7 @@
         android:layout_height="match_parent"
         android:elevation="2dp"
         android:paddingHorizontal="21dp"
-        android:paddingVertical="23dp"
-        >
+        android:paddingVertical="23dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/top"
@@ -71,8 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/info"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/info">
 
             <LinearLayout
                 android:id="@+id/main_questions"
@@ -111,26 +109,69 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_answers"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="28dp"
-            android:divider="@null"
-            android:background="#FFFFFF"
-            android:layout_marginBottom="200dp"
-            android:dividerHeight="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/next_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/question_container"
-            tools:listitem="@layout/question_item_list">
+            app:layout_constraintTop_toBottomOf="@+id/question_container">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/tv_option1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Apple" />
 
+            <TextView
+                android:id="@+id/tv_option2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Google" />
 
+            <TextView
+                android:id="@+id/tv_option3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Android Inc." />
+
+            <TextView
+                android:id="@+id/tv_option4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#7A8089"
+                android:textSize="18sp"
+                tools:text="Nokia" />
+
+        </LinearLayout>
 
 
         <ImageButton
@@ -138,21 +179,11 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="#fff"
+            android:src="@drawable/ic_arrow_forward"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_arrow_forward"
 
             />
-
-        <Button
-            android:id="@+id/btn_teste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_answers" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

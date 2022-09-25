@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
-        android:id="@+id/button2"
+        android:id="@+id/btn_sobre"
         android:background="@drawable/shape_style"
         android:layout_width="70dp"
         android:layout_height="70dp"

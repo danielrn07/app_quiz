@@ -14,10 +14,10 @@
         android:theme="@style/Theme.App_quiz_assessment"
         tools:targetApi="31">
         <activity
-            android:name=".TesteActivity"
+            android:name=".QuestionsActivity"
             android:exported="false" />
         <activity
-            android:name=".QuestionsActivity"
+            android:name=".TesteActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
