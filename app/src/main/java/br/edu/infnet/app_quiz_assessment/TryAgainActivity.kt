@@ -20,10 +20,10 @@ class TryAgainActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-        configuraBotoes()
+        configureButtons()
     }
 
-    private fun configuraBotoes() {
+    private fun configureButtons() {
         // Reinicia as questões
         binding.btnYes.setOnClickListener {
             val intent = Intent(this, QuestionsActivity::class.java)
@@ -32,7 +32,7 @@ class TryAgainActivity : AppCompatActivity() {
 
         // Volta para a tela inicial
         binding.btnNot.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, InitialActivity::class.java)
             startActivity(intent)
         }
     }

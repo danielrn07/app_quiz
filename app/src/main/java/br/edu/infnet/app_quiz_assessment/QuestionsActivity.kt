@@ -95,8 +95,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         selectedOptionPosition = 0
     }
 
-    private fun backToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+    private fun backToInitialActivity() {
+        val intent = Intent(this, InitialActivity::class.java)
         startActivity(intent)
     }
 
@@ -114,7 +114,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 when {
                     currentPosition <= questionsList!!.size -> { setQuestion() }
                     else -> {
-                        backToMainActivity()
+                        backToInitialActivity()
                     }
                 }
             }
@@ -122,7 +122,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         // Volta para a tela inicial
         binding.closeBtn.setOnClickListener {
-            backToMainActivity()
+            backToInitialActivity()
         }
     }
 
