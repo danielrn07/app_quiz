@@ -30,12 +30,10 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         val view = binding.root
         setContentView(view)
 
-
         setup()
     }
 
     private fun setup() {
-
         binding.tvTotalLife.text = "$contLife"
 
         questionsList = Constants.getQuestions()
@@ -44,36 +42,36 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         binding.nextBtn.setOnClickListener(this)
 
         setQuestion()
-        configuraBotao()
+        configureButtons()
     }
-    override fun onClick(verificador: View?) {
+    override fun onClick(checker: View?) {
 
-        when (verificador?.id) {
+        when (checker?.id) {
 
             R.id.tv_option1 -> {
                 selectedOptionView(binding.tvOption1, 1)
-                verificaResposta()
+                checkAnswer()
             }
 
             R.id.tv_option2 -> {
                 selectedOptionView(binding.tvOption2, 2)
-                verificaResposta()
+                checkAnswer()
             }
 
             R.id.tv_option3 -> {
                 selectedOptionView(binding.tvOption3, 3)
-                verificaResposta()
+                checkAnswer()
             }
 
             R.id.tv_option4 -> {
                 selectedOptionView(binding.tvOption4, 4)
-                verificaResposta()
+                checkAnswer()
             }
         }
     }
 
 
-    private fun verificaResposta() {
+    private fun checkAnswer() {
         val question = questionsList?.get(currentPosition - 1)
 
 
@@ -97,7 +95,12 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         selectedOptionPosition = 0
     }
 
-    private fun configuraBotao() {
+    private fun backToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun configureButtons() {
 
         binding.tvOption1.setOnClickListener(this)
         binding.tvOption2.setOnClickListener(this)
@@ -111,15 +114,17 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 when {
                     currentPosition <= questionsList!!.size -> { setQuestion() }
                     else -> {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+                        backToMainActivity()
                     }
                 }
             }
         }
+
+        // Volta para a tela inicial
+        binding.closeBtn.setOnClickListener {
+            backToMainActivity()
+        }
     }
-
-
 
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
@@ -129,6 +134,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         defaultOptionsView()
 
+        // Contador de questões
         binding.tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex+1}"
         binding.tvCounter.text = "$currentPosition. "
 
