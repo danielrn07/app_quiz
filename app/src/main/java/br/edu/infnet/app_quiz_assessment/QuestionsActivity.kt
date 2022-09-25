@@ -80,6 +80,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         // Verifica se a resposta está errada
         if (question!!.correctAnswer != selectedOptionPosition) {
             answerView(selectedOptionPosition, R.drawable.wrong_option)
+
             //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
             contLife--
             binding.tvTotalLife.text = "$contLife"
