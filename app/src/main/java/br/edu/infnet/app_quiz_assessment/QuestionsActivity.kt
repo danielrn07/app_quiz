@@ -91,7 +91,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
             //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
             counterLife--
-            binding.tvTotalLife.text = "0$counterLife"
+            binding.tvTotalLife.text = " 0$counterLife"
             if (counterLife == 0){
                 val intent = Intent(this, TryAgainActivity::class.java)
                 startActivity(intent)

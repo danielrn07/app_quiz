@@ -1,5 +1,6 @@
 package br.edu.infnet.app_quiz_assessment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +27,7 @@ class RankActivity : AppCompatActivity() {
 
     private fun setup() {
         setupRecyclerView()
-        configuraBotao()
+        configureButtons()
     }
 
 
@@ -52,8 +53,12 @@ class RankActivity : AppCompatActivity() {
         listaPontos.add(RankList("Option4", 7))
     }
 
-    private fun configuraBotao() {
+    private fun configureButtons() {
 
+        binding.btnMain.setOnClickListener {
+            val intent = Intent(this, InitialActivity::class.java)
+            startActivity(intent)
+        }
         atualizaRecyclerView()
     }
 
