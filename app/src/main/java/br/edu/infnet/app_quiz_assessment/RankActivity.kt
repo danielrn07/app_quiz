@@ -3,9 +3,9 @@ package br.edu.infnet.app_quiz_assessment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityRankBinding
 import br.edu.infnet.app_quiz_assessment.models.RankList
+import br.edu.infnet.app_quiz_assessment.models.RankListAdapter
 
 class RankActivity : AppCompatActivity() {
 

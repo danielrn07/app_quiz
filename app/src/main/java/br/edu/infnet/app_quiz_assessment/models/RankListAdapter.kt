@@ -1,4 +1,4 @@
-package br.edu.infnet.app_quiz_assessment
+package br.edu.infnet.app_quiz_assessment.models
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.infnet.app_quiz_assessment.databinding.QuestionItemListBinding
-import br.edu.infnet.app_quiz_assessment.models.RankList
 
 class RankListAdapter: ListAdapter<RankList, RankListAdapter.ViewHolder>(QuestionDiffCallBack()) {
 

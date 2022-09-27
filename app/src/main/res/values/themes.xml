@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/purple_500</item>
 
         // Cor da barra
-        <item name="colorPrimaryVariant">#ffffff</item>
+        <item name="colorPrimaryVariant">#42b4a5</item>
 
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -23,6 +23,10 @@
 
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="TextInputTestStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#00ffff</item>
     </style>
 
 </resources>
