@@ -17,10 +17,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityQuestionsBinding
 
     var counterLife = 3
+    var resultado = 0
+    var respondido = false
 
     private var currentPosition: Int = 1
     private var questionsList: ArrayList<QuestionsAndOptions>? = null
-    private var correctAnswers: Int = 0
     private var selectedOptionPosition: Int = 0
 
 
@@ -47,35 +48,38 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
     override fun onClick(checker: View?) {
 
-        when (checker?.id) {
+        if (respondido.not()) {
+            when (checker?.id) {
 
-            R.id.tv_option1 -> {
-                selectedOptionView(binding.tvOption1, 1)
-                checkAnswer()
-            }
+                R.id.tv_option1 -> {
+                    selectedOptionView(binding.tvOption1, 1)
+                    checkAnswer()
+                }
 
-            R.id.tv_option2 -> {
-                selectedOptionView(binding.tvOption2, 2)
-                checkAnswer()
-            }
+                R.id.tv_option2 -> {
+                    selectedOptionView(binding.tvOption2, 2)
+                    checkAnswer()
+                }
 
-            R.id.tv_option3 -> {
-                selectedOptionView(binding.tvOption3, 3)
-                checkAnswer()
-            }
+                R.id.tv_option3 -> {
+                    selectedOptionView(binding.tvOption3, 3)
+                    checkAnswer()
+                }
 
-            R.id.tv_option4 -> {
-                selectedOptionView(binding.tvOption4, 4)
-                checkAnswer()
+                R.id.tv_option4 -> {
+                    selectedOptionView(binding.tvOption4, 4)
+                    checkAnswer()
+                }
             }
         }
+
     }
+
 
 
     @SuppressLint("SetTextI18n")
     private fun checkAnswer() {
         val question = questionsList?.get(currentPosition - 1)
-
 
         // Verifica se a resposta está errada
         if (question!!.correctAnswer != selectedOptionPosition) {
@@ -89,62 +93,77 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         } else {
-            correctAnswers++
+            resultado += 1
         }
 
         // Verifica se a resposta está correta
         answerView(question.correctAnswer, R.drawable.correct_option)
+
+
         selectedOptionPosition = 0
+        respondido = true
     }
 
     private fun backToInitialActivity() {
         val intent = Intent(this, InitialActivity::class.java)
+
         startActivity(intent)
     }
 
     private fun configureButtons() {
 
-        binding.tvOption1.setOnClickListener(this)
-        binding.tvOption2.setOnClickListener(this)
-        binding.tvOption3.setOnClickListener(this)
-        binding.tvOption4.setOnClickListener(this)
+        with(binding) {
+            tvOption1.setOnClickListener(this@QuestionsActivity)
+            tvOption2.setOnClickListener(this@QuestionsActivity)
+            tvOption3.setOnClickListener(this@QuestionsActivity)
+            tvOption4.setOnClickListener(this@QuestionsActivity)
 
-        // Avança para a próxima questão
-        binding.nextBtn.setOnClickListener {
-            if (selectedOptionPosition == 0) {
-                currentPosition++
-                when {
-                    currentPosition <= questionsList!!.size -> { setQuestion() }
-                    else -> {
-                        backToInitialActivity()
+            // Avança para a próxima questão
+            nextBtn.setOnClickListener {
+                if (selectedOptionPosition == 0) {
+                    currentPosition++
+                    when {
+                        currentPosition <= questionsList!!.size -> { setQuestion() }
+                        else -> {
+                            val intent = Intent(this@QuestionsActivity, ResultActivity::class.java)
+                            intent.putExtra(RESULTADO, resultado.toString())
+                            startActivity(intent)
+                        }
                     }
                 }
+                respondido = false
+            }
+
+            // Volta para a tela inicial
+            closeBtn.setOnClickListener {
+                backToInitialActivity()
             }
         }
 
-        // Volta para a tela inicial
-        binding.closeBtn.setOnClickListener {
-            backToInitialActivity()
-        }
+
+
     }
 
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
-        val question =
-            // Pega a pergunta da lista de acordo com a posição atual
-            questionsList!![currentPosition - 1]
+        with(binding) {
+            val question =
+                // Pega a pergunta da lista de acordo com a posição atual
+                questionsList!![currentPosition - 1]
 
-        defaultOptionsView()
+            defaultOptionsView()
 
-        // Contador de questões
-        binding.tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex+1}"
-        binding.tvCounter.text = "$currentPosition. "
+            // Contador de questões
+            tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex+1}"
+            tvCounter.text = "$currentPosition. "
 
-        binding.questionContainer2.text = question.pergunta
-        binding.tvOption1.text = question.option1
-        binding.tvOption2.text = question.option2
-        binding.tvOption3.text = question.option3
-        binding.tvOption4.text = question.option4
+            questionContainer2.text = question.pergunta
+            tvOption1.text = question.option1
+            tvOption2.text = question.option2
+            tvOption3.text = question.option3
+            tvOption4.text = question.option4
+        }
+
     }
 
     private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
@@ -182,6 +201,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun answerView(answer: Int, drawableView: Int) {
 
+
         when (answer) {
 
             1 -> {
@@ -209,5 +229,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 )
             }
         }
+    }
+    companion object {
+        val RESULTADO = "RESULTADO"
     }
 }

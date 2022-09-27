@@ -21,19 +21,11 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        return view
-
-        nome = activity?.intent?.getStringExtra(MainActivity.NOME) ?: ""
-        binding.tvName.text = nome
+        return binding.root
     }
-
-
-
-
 
     companion object {
         val NOME = "NOME"
     }
-
 
 }

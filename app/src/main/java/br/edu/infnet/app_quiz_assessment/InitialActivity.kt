@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
-import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityInitialBinding
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
 import br.edu.infnet.app_quiz_assessment.databinding.CustomBottomSheetBinding
@@ -45,7 +44,7 @@ class InitialActivity : AppCompatActivity() {
         val sheetBinding: CustomBottomSheetBinding =
             CustomBottomSheetBinding.inflate(layoutInflater, null, false)
 
-
+        // Implementa cliques nos botões no dialog
         sheetBinding.btnLinkedin.setOnClickListener { showLinkedIn() }
         sheetBinding.btnGithub.setOnClickListener { showGithub() }
 
