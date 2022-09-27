@@ -30,13 +30,21 @@ class InitialActivity : AppCompatActivity() {
     }
 
     private fun configureButtons() {
-        binding.btnIniciar.setOnClickListener {
-            val intent = Intent(this, QuestionsActivity::class.java)
-            startActivity(intent)
+        with(binding) {
+            btnIniciar.setOnClickListener {
+                val intent = Intent(this@InitialActivity, QuestionsActivity::class.java)
+                startActivity(intent)
+            }
+            btnSobre.setOnClickListener {
+                showBottomSheetDialog()
+            }
+
+            btnRank.setOnClickListener {
+                val intent = Intent(this@InitialActivity, RankActivity::class.java)
+                startActivity(intent)
+            }
         }
-        binding.btnSobre.setOnClickListener {
-            showBottomSheetDialog()
-        }
+
     }
 
     private fun showBottomSheetDialog() {
