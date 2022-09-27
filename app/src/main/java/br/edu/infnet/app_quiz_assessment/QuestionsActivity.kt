@@ -40,7 +40,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         val nome = intent.getStringExtra(MainActivity.NOME) ?: ""
         intent.putExtra(MainActivity.NOME, nome)
 
-        binding.tvTotalLife.text = "0$counterLife"
+        binding.tvTotalLife.text = " 0$counterLife"
 
         questionsList = Constants.getQuestions()
 
@@ -176,12 +176,12 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         selectedOptionPosition = selectedOptionNum
 
         tv.setTextColor(
-            Color.parseColor("#363A43")
+            Color.parseColor("#dce0dd")
         )
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(
             this,
-            R.drawable.shape_teste_botao
+            R.drawable.shape_options
         )
     }
 
@@ -193,11 +193,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         options.add(3, binding.tvOption4)
 
         for (option in options) {
-            option.setTextColor(Color.parseColor("#7A8089"))
+            option.setTextColor(Color.parseColor("#000000"))
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(
                 this,
-                R.drawable.shape_teste_botao
+                R.drawable.shape_options
             )
         }
     }
