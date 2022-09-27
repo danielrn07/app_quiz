@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/purple_500</item>
 
         // Cor da barra
-        <item name="colorPrimaryVariant">#42b4a5</item>
+        <item name="colorPrimaryVariant">#566bf3</item>
 
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
