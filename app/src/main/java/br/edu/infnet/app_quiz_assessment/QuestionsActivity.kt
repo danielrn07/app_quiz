@@ -36,6 +36,10 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     private fun setup() {
+
+        val nome = intent.getStringExtra(MainActivity.NOME) ?: ""
+        intent.putExtra(MainActivity.NOME, nome)
+
         binding.tvTotalLife.text = "0$counterLife"
 
         questionsList = Constants.getQuestions()
@@ -98,8 +102,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         // Verifica se a resposta está correta
         answerView(question.correctAnswer, R.drawable.correct_option)
-
-
         selectedOptionPosition = 0
         respondido = true
     }
@@ -109,6 +111,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         startActivity(intent)
     }
+
 
     private fun configureButtons() {
 
@@ -200,7 +203,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun answerView(answer: Int, drawableView: Int) {
-
 
         when (answer) {
 

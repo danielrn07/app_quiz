@@ -22,10 +22,12 @@ class InitialActivity : AppCompatActivity() {
         setContentView(view)
 
         setup()
-
     }
 
     private fun setup() {
+        var nome = intent.getStringExtra(MainActivity.NOME) ?: ""
+        intent.putExtra(MainActivity.NOME, nome)
+
         configureButtons()
     }
 

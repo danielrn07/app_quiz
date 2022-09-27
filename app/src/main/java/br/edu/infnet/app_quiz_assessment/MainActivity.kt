@@ -1,10 +1,7 @@
 package br.edu.infnet.app_quiz_assessment
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
@@ -36,9 +33,17 @@ class MainActivity : AppCompatActivity() {
                 )
                     .show()
             } else {
+                val nome = binding.inputName.text.toString()
                 val intent = Intent(this, InitialActivity::class.java)
+                intent.putExtra(NOME, nome)
                 startActivity(intent)
             }
+
         }
     }
+
+    companion object {
+        val NOME = "NOME"
+    }
 }
+
