@@ -34,8 +34,10 @@ class MainActivity : AppCompatActivity() {
                     .show()
             } else {
                 val nome = binding.inputName.text.toString()
+
                 val intent = Intent(this, InitialActivity::class.java)
                 intent.putExtra(NOME, nome)
+
                 startActivity(intent)
             }
 

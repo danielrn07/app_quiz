@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityQuestionsBinding
 import br.edu.infnet.app_quiz_assessment.models.QuestionsAndOptions
 
@@ -37,8 +38,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     @SuppressLint("SetTextI18n")
     private fun setup() {
 
-        val nome = intent.getStringExtra(MainActivity.NOME) ?: ""
-        intent.putExtra(MainActivity.NOME, nome)
+
 
         binding.tvTotalLife.text = " 0$counterLife"
 
@@ -128,8 +128,13 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     when {
                         currentPosition <= questionsList!!.size -> { setQuestion() }
                         else -> {
-                            val intent = Intent(this@QuestionsActivity, ResultActivity::class.java)
-                            intent.putExtra(RESULTADO, resultado.toString())
+                            val nome = intent.getStringExtra(NOME) ?: ""
+
+                            val intent = Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
+                                putExtra(NOME, nome)
+                                putExtra(RESULTADO, resultado.toString())
+                            }
+
                             startActivity(intent)
                         }
                     }
@@ -235,4 +240,5 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         val RESULTADO = "RESULTADO"
     }
+
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityInitialBinding
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
 import br.edu.infnet.app_quiz_assessment.databinding.CustomBottomSheetBinding
@@ -25,8 +26,7 @@ class InitialActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-        var nome = intent.getStringExtra(MainActivity.NOME) ?: ""
-        intent.putExtra(MainActivity.NOME, nome)
+
 
         configureButtons()
     }
@@ -34,7 +34,12 @@ class InitialActivity : AppCompatActivity() {
     private fun configureButtons() {
         with(binding) {
             btnIniciar.setOnClickListener {
-                val intent = Intent(this@InitialActivity, QuestionsActivity::class.java)
+
+                val nome = intent.getStringExtra(NOME) ?: ""
+
+                val intent = Intent(this@InitialActivity, QuestionsActivity::class.java).apply {
+                    putExtra(NOME, nome)
+                }
                 startActivity(intent)
             }
             btnSobre.setOnClickListener {
@@ -72,5 +77,7 @@ class InitialActivity : AppCompatActivity() {
         val uri = Uri.parse("https://github.com/danielrn07")
         startActivity(Intent(Intent.ACTION_VIEW, uri))
     }
+
+
 
 }

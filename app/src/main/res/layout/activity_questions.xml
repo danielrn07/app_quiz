@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@drawable/background_style"
     >
 
@@ -163,10 +162,9 @@
             <TextView
                 android:id="@+id/tv_option1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:padding="15dp"
                 android:textSize="18sp"
                 tools:text="Lorem ipsum"
                 />
@@ -174,42 +172,27 @@
             <TextView
                 android:id="@+id/tv_option2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:padding="15dp"
-                android:textColor="#7A8089"
                 android:textSize="18sp"
                 tools:text="Lorem ipsum" />
 
             <TextView
                 android:id="@+id/tv_option3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:padding="15dp"
-                android:textColor="#7A8089"
                 android:textSize="18sp"
                 tools:text="Lorem ipsum" />
 
             <TextView
                 android:id="@+id/tv_option4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:padding="15dp"
-                android:textColor="#7A8089"
                 android:textSize="18sp"
                 tools:text="Lorem ipsum" />
 

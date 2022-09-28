@@ -24,8 +24,6 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    companion object {
-        val NOME = "NOME"
-    }
+
 
 }
