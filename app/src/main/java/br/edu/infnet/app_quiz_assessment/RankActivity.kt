@@ -47,10 +47,10 @@ class RankActivity : AppCompatActivity() {
 
 
     private fun setupInitialList() {
-        listaPontos.add(RankList("Option1", 10))
-        listaPontos.add(RankList("Option2", 9))
-        listaPontos.add(RankList("Option3", 8))
-        listaPontos.add(RankList("Option4", 7))
+        listaPontos.add(RankList("Daniel Nascimento", 10))
+        listaPontos.add(RankList("Daniel", 9))
+        listaPontos.add(RankList("Paulo", 8))
+        listaPontos.add(RankList("PD", 7))
     }
 
     private fun configureButtons() {

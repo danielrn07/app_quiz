@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityQuestionsBinding
@@ -17,6 +18,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityQuestionsBinding
 
+    val viewModel: MainViewModel by viewModels()
+
     var counterLife = 3
     var resultado = 0
     var respondido = false
@@ -24,7 +27,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var currentPosition: Int = 1
     private var questionsList: ArrayList<QuestionsAndOptions>? = null
     private var selectedOptionPosition: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +37,44 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         setup()
     }
 
+//    private fun checkAnswer() {
+//        viewModel.isLoading.observe(this) {
+//            val question = questionsList?.get(currentPosition - 1)
+//
+//            // Verifica se a resposta está errada
+//            if (question!!.correctAnswer != selectedOptionPosition) {
+//                answerView(selectedOptionPosition, R.drawable.wrong_option)
+//
+//                //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
+//                counterLife--
+//                binding.tvTotalLife.text = " 0$counterLife"
+//                if (counterLife == 0) {
+//                    val intent = Intent(this, TryAgainActivity::class.java)
+//                    startActivity(intent)
+//                }
+//            } else {
+//                resultado += 1
+//            }
+//
+//            // Verifica se a resposta está correta
+//            answerView(question.correctAnswer, R.drawable.correct_option)
+//            selectedOptionPosition = 0
+//            respondido = true
+//        }
+//    }
+
     @SuppressLint("SetTextI18n")
     private fun setup() {
-
-
 
         binding.tvTotalLife.text = " 0$counterLife"
 
         questionsList = Constants.getQuestions()
-
         // Adiciona um evento de clique para o botão de envio
         binding.nextBtn.setOnClickListener(this)
-
         setQuestion()
         configureButtons()
     }
+
     override fun onClick(checker: View?) {
 
         if (respondido.not()) {
@@ -79,8 +104,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-
-
     @SuppressLint("SetTextI18n")
     private fun checkAnswer() {
         val question = questionsList?.get(currentPosition - 1)
@@ -92,7 +115,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
             counterLife--
             binding.tvTotalLife.text = " 0$counterLife"
-            if (counterLife == 0){
+            if (counterLife == 0) {
                 val intent = Intent(this, TryAgainActivity::class.java)
                 startActivity(intent)
             }
@@ -108,13 +131,11 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun backToInitialActivity() {
         val intent = Intent(this, InitialActivity::class.java)
-
         startActivity(intent)
     }
 
 
     private fun configureButtons() {
-
         with(binding) {
             tvOption1.setOnClickListener(this@QuestionsActivity)
             tvOption2.setOnClickListener(this@QuestionsActivity)
@@ -126,14 +147,17 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 if (selectedOptionPosition == 0) {
                     currentPosition++
                     when {
-                        currentPosition <= questionsList!!.size -> { setQuestion() }
+                        currentPosition <= questionsList!!.size -> {
+                            setQuestion()
+                        }
                         else -> {
                             val nome = intent.getStringExtra(NOME) ?: ""
 
-                            val intent = Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
-                                putExtra(NOME, nome)
-                                putExtra(RESULTADO, resultado.toString())
-                            }
+                            val intent =
+                                Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
+                                    putExtra(NOME, nome)
+                                    putExtra(RESULTADO, resultado.toString())
+                                }
 
                             startActivity(intent)
                         }
@@ -149,7 +173,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         }
 
 
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -162,7 +185,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             defaultOptionsView()
 
             // Contador de questões
-            tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex+1}"
+            tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex + 1}"
             tvCounter.text = "$currentPosition. "
 
             questionContainer2.text = question.pergunta
@@ -237,6 +260,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
     companion object {
         val RESULTADO = "RESULTADO"
     }

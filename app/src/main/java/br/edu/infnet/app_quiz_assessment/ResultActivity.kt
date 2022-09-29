@@ -28,7 +28,7 @@ class ResultActivity : AppCompatActivity() {
 
 
         val resultado = intent.getStringExtra(QuestionsActivity.RESULTADO) ?: ""
-        val nome = intent.getStringExtra(NOME) ?: "teste"
+        val nome = intent.getStringExtra(NOME) ?: ""
 
         binding.tvResult.text = "Você acertou $resultado questões!"
         binding.tvName.text = "Olá $nome"

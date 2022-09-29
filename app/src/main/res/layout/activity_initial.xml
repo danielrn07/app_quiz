@@ -58,15 +58,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Vamos nos divertir!"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textColor="#dce0dd"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo"
-        tools:layout_editor_absoluteX="16dp"
-
-        />
+        android:text=" Vamos nos divertir!"
+        android:textColor="#dce0dd"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titulo" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_iniciar"
