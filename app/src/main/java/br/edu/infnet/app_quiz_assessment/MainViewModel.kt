@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel: ViewModel() {
-    private val _isLoading: MutableLiveData<Boolean> by lazy {
+    private val _isCheck: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
     }
 
-    val isLoading: LiveData<Boolean> = _isLoading
+    val isCheck: LiveData<Boolean> = _isCheck
 
-    fun setIsLoading(value: Boolean) {
-        _isLoading.postValue(value)
+    fun setIsCheck(value: Boolean) {
+        _isCheck.postValue(value)
     }
 }

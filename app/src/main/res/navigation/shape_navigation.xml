@@ -3,11 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shape_navigation"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="br.edu.infnet.app_quiz_assessment.ProfileFragment"
+        android:id="@+id/nav_home"
+        android:name="br.edu.infnet.app_quiz_assessment.HomeFragment"
+        android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/nav_rank"
+        android:name="br.edu.infnet.app_quiz_assessment.RankFragment"
+        android:label="fragment_rank"
+        tools:layout="@layout/fragment_rank" />
+
+    <fragment
+        android:id="@+id/nav_info"
+        android:name="br.edu.infnet.app_quiz_assessment.InfoFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_info" />
 </navigation>

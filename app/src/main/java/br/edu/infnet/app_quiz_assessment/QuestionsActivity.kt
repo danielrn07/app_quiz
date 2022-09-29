@@ -1,6 +1,7 @@
 package br.edu.infnet.app_quiz_assessment
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -51,7 +52,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     private fun setupObservers() {
-        viewModel.isLoading.observe(this) {
+        viewModel.isCheck.observe(this) {
             if (it == true) {
                 val question = questionsList?.get(currentPosition - 1)
                 // Verifica se a resposta está errada
@@ -79,7 +80,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     fun pulaQuestao() {
         binding.nextBtn.setOnClickListener {
-            if (selectedOptionPosition == 0) {
+            if (selectedOptionPosition != -1) {
                 currentPosition++
                 when {
                     currentPosition <= questionsList!!.size -> {
@@ -123,117 +124,117 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         if (respondido.not()) {
             when (checker?.id) {
-
                 R.id.tv_option1 -> {
                     selectedOptionView(binding.tvOption1, 1)
-                    viewModel.setIsLoading(true)
+                    viewModel.setIsCheck(true)
                 }
 
                 R.id.tv_option2 -> {
                     selectedOptionView(binding.tvOption2, 2)
-                    viewModel.setIsLoading(true)
+                    viewModel.setIsCheck(true)
                 }
 
                 R.id.tv_option3 -> {
                     selectedOptionView(binding.tvOption3, 3)
-                    viewModel.setIsLoading(true)
+                    viewModel.setIsCheck(true)
                 }
 
                 R.id.tv_option4 -> {
                     selectedOptionView(binding.tvOption4, 4)
-                    viewModel.setIsLoading(true)
+                    viewModel.setIsCheck(true)
                 }
             }
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun setQuestion() {
-        with(binding) {
-            val question =
-                // Pega a pergunta da lista de acordo com a posição atual
-                questionsList!![currentPosition - 1]
 
-            defaultOptionsView()
-
-            // Contador de questões
-            tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex + 1}"
-            tvCounter.text = "$currentPosition. "
-
-            questionContainer2.text = question.pergunta
-            tvOption1.text = question.option1
-            tvOption2.text = question.option2
-            tvOption3.text = question.option3
-            tvOption4.text = question.option4
-        }
-
-    }
-
-    private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
+@SuppressLint("SetTextI18n")
+private fun setQuestion() {
+    with(binding) {
+        val question =
+            // Pega a pergunta da lista de acordo com a posição atual
+            questionsList!![currentPosition - 1]
 
         defaultOptionsView()
 
-        selectedOptionPosition = selectedOptionNum
+        // Contador de questões
+        tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex + 1}"
+        tvCounter.text = "$currentPosition. "
 
-        tv.setTextColor(
-            Color.parseColor("#dce0dd")
-        )
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.background = ContextCompat.getDrawable(
+        questionContainer2.text = question.pergunta
+        tvOption1.text = question.option1
+        tvOption2.text = question.option2
+        tvOption3.text = question.option3
+        tvOption4.text = question.option4
+    }
+
+}
+
+private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
+
+    defaultOptionsView()
+
+    selectedOptionPosition = selectedOptionNum
+
+    tv.setTextColor(
+        Color.parseColor("#dce0dd")
+    )
+    tv.setTypeface(tv.typeface, Typeface.BOLD)
+    tv.background = ContextCompat.getDrawable(
+        this,
+        R.drawable.shape_options
+    )
+}
+
+private fun defaultOptionsView() {
+    val options = ArrayList<TextView>()
+    options.add(0, binding.tvOption1)
+    options.add(1, binding.tvOption2)
+    options.add(2, binding.tvOption3)
+    options.add(3, binding.tvOption4)
+
+    for (option in options) {
+        option.setTextColor(Color.parseColor("#000000"))
+        option.typeface = Typeface.DEFAULT
+        option.background = ContextCompat.getDrawable(
             this,
             R.drawable.shape_options
         )
     }
+}
 
-    private fun defaultOptionsView() {
-        val options = ArrayList<TextView>()
-        options.add(0, binding.tvOption1)
-        options.add(1, binding.tvOption2)
-        options.add(2, binding.tvOption3)
-        options.add(3, binding.tvOption4)
+private fun answerView(answer: Int, drawableView: Int) {
 
-        for (option in options) {
-            option.setTextColor(Color.parseColor("#000000"))
-            option.typeface = Typeface.DEFAULT
-            option.background = ContextCompat.getDrawable(
+    when (answer) {
+
+        1 -> {
+            binding.tvOption1.background = ContextCompat.getDrawable(
                 this,
-                R.drawable.shape_options
+                drawableView
+            )
+        }
+        2 -> {
+            binding.tvOption2.background = ContextCompat.getDrawable(
+                this,
+                drawableView
+            )
+        }
+        3 -> {
+            binding.tvOption3.background = ContextCompat.getDrawable(
+                this,
+                drawableView
+            )
+        }
+        4 -> {
+            binding.tvOption4.background = ContextCompat.getDrawable(
+                this,
+                drawableView
             )
         }
     }
+}
 
-    private fun answerView(answer: Int, drawableView: Int) {
-
-        when (answer) {
-
-            1 -> {
-                binding.tvOption1.background = ContextCompat.getDrawable(
-                    this,
-                    drawableView
-                )
-            }
-            2 -> {
-                binding.tvOption2.background = ContextCompat.getDrawable(
-                    this,
-                    drawableView
-                )
-            }
-            3 -> {
-                binding.tvOption3.background = ContextCompat.getDrawable(
-                    this,
-                    drawableView
-                )
-            }
-            4 -> {
-                binding.tvOption4.background = ContextCompat.getDrawable(
-                    this,
-                    drawableView
-                )
-            }
-        }
-    }
-
-    companion object {
-        val RESULTADO = "RESULTADO"
-    }
+companion object {
+    val RESULTADO = "RESULTADO"
+}
 }
