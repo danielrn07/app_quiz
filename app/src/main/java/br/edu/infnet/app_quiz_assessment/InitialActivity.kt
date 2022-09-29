@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityInitialBinding
@@ -15,6 +16,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class InitialActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInitialBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,21 +30,21 @@ class InitialActivity : AppCompatActivity() {
 
     private fun setup() {
 
-
         configureButtons()
     }
+
+
 
     private fun configureButtons() {
         with(binding) {
             btnIniciar.setOnClickListener {
-
                 val nome = intent.getStringExtra(NOME) ?: ""
-
                 val intent = Intent(this@InitialActivity, QuestionsActivity::class.java).apply {
                     putExtra(NOME, nome)
                 }
                 startActivity(intent)
             }
+
             btnSobre.setOnClickListener {
                 showBottomSheetDialog()
             }
@@ -51,7 +54,6 @@ class InitialActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
     }
 
     private fun showBottomSheetDialog() {
@@ -67,7 +69,6 @@ class InitialActivity : AppCompatActivity() {
         dialog.show()
     }
 
-
     private fun showLinkedIn() {
         val uri = Uri.parse("https://www.linkedin.com/in/danielrn07/")
         startActivity(Intent(Intent.ACTION_VIEW, uri))
@@ -77,6 +78,4 @@ class InitialActivity : AppCompatActivity() {
         val uri = Uri.parse("https://github.com/danielrn07")
         startActivity(Intent(Intent.ACTION_VIEW, uri))
     }
-
-
 }

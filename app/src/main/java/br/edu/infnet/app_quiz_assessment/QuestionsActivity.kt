@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
@@ -37,42 +38,85 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         setup()
     }
 
-//    private fun checkAnswer() {
-//        viewModel.isLoading.observe(this) {
-//            val question = questionsList?.get(currentPosition - 1)
-//
-//            // Verifica se a resposta está errada
-//            if (question!!.correctAnswer != selectedOptionPosition) {
-//                answerView(selectedOptionPosition, R.drawable.wrong_option)
-//
-//                //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
-//                counterLife--
-//                binding.tvTotalLife.text = " 0$counterLife"
-//                if (counterLife == 0) {
-//                    val intent = Intent(this, TryAgainActivity::class.java)
-//                    startActivity(intent)
-//                }
-//            } else {
-//                resultado += 1
-//            }
-//
-//            // Verifica se a resposta está correta
-//            answerView(question.correctAnswer, R.drawable.correct_option)
-//            selectedOptionPosition = 0
-//            respondido = true
-//        }
-//    }
-
     @SuppressLint("SetTextI18n")
     private fun setup() {
-
         binding.tvTotalLife.text = " 0$counterLife"
-
         questionsList = Constants.getQuestions()
-        // Adiciona um evento de clique para o botão de envio
-        binding.nextBtn.setOnClickListener(this)
-        setQuestion()
+
         configureButtons()
+        setupObservers()
+        setQuestion()
+        pulaQuestao()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setupObservers() {
+        viewModel.isLoading.observe(this) {
+            if (it == true) {
+                val question = questionsList?.get(currentPosition - 1)
+                // Verifica se a resposta está errada
+                if (question!!.correctAnswer != selectedOptionPosition) {
+                    answerView(selectedOptionPosition, R.drawable.wrong_option)
+
+                    //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
+                    counterLife--
+                    binding.tvTotalLife.text = " 0$counterLife"
+                    if (counterLife <= 0) {
+                        val intent = Intent(this, TryAgainActivity::class.java)
+                        startActivity(intent)
+                    }
+                } else {
+                    resultado += 1
+                }
+
+                // Verifica se a resposta está correta
+                answerView(question.correctAnswer, R.drawable.correct_option)
+                selectedOptionPosition = 0
+                respondido = true
+            }
+        }
+    }
+
+    fun pulaQuestao() {
+        binding.nextBtn.setOnClickListener {
+            if (selectedOptionPosition == 0) {
+                currentPosition++
+                when {
+                    currentPosition <= questionsList!!.size -> {
+                        setQuestion()
+                    }
+                    else -> {
+                        val nome = intent.getStringExtra(NOME) ?: ""
+                        val intent =
+                            Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
+                                putExtra(NOME, nome)
+                                putExtra(RESULTADO, resultado.toString())
+                            }
+                        startActivity(intent)
+                    }
+                }
+            }
+            respondido = false
+        }
+    }
+
+    private fun backToInitialActivity() {
+        val intent = Intent(this, InitialActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun configureButtons() {
+        with(binding) {
+            tvOption1.setOnClickListener(this@QuestionsActivity)
+            tvOption2.setOnClickListener(this@QuestionsActivity)
+            tvOption3.setOnClickListener(this@QuestionsActivity)
+            tvOption4.setOnClickListener(this@QuestionsActivity)
+
+            // Volta para a tela inicial
+            closeBtn.setOnClickListener {
+                backToInitialActivity()
+            }
+        }
     }
 
     override fun onClick(checker: View?) {
@@ -82,97 +126,25 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
                 R.id.tv_option1 -> {
                     selectedOptionView(binding.tvOption1, 1)
-                    checkAnswer()
+                    viewModel.setIsLoading(true)
                 }
 
                 R.id.tv_option2 -> {
                     selectedOptionView(binding.tvOption2, 2)
-                    checkAnswer()
+                    viewModel.setIsLoading(true)
                 }
 
                 R.id.tv_option3 -> {
                     selectedOptionView(binding.tvOption3, 3)
-                    checkAnswer()
+                    viewModel.setIsLoading(true)
                 }
 
                 R.id.tv_option4 -> {
                     selectedOptionView(binding.tvOption4, 4)
-                    checkAnswer()
+                    viewModel.setIsLoading(true)
                 }
             }
         }
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun checkAnswer() {
-        val question = questionsList?.get(currentPosition - 1)
-
-        // Verifica se a resposta está errada
-        if (question!!.correctAnswer != selectedOptionPosition) {
-            answerView(selectedOptionPosition, R.drawable.wrong_option)
-
-            //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
-            counterLife--
-            binding.tvTotalLife.text = " 0$counterLife"
-            if (counterLife == 0) {
-                val intent = Intent(this, TryAgainActivity::class.java)
-                startActivity(intent)
-            }
-        } else {
-            resultado += 1
-        }
-
-        // Verifica se a resposta está correta
-        answerView(question.correctAnswer, R.drawable.correct_option)
-        selectedOptionPosition = 0
-        respondido = true
-    }
-
-    private fun backToInitialActivity() {
-        val intent = Intent(this, InitialActivity::class.java)
-        startActivity(intent)
-    }
-
-
-    private fun configureButtons() {
-        with(binding) {
-            tvOption1.setOnClickListener(this@QuestionsActivity)
-            tvOption2.setOnClickListener(this@QuestionsActivity)
-            tvOption3.setOnClickListener(this@QuestionsActivity)
-            tvOption4.setOnClickListener(this@QuestionsActivity)
-
-            // Avança para a próxima questão
-            nextBtn.setOnClickListener {
-                if (selectedOptionPosition == 0) {
-                    currentPosition++
-                    when {
-                        currentPosition <= questionsList!!.size -> {
-                            setQuestion()
-                        }
-                        else -> {
-                            val nome = intent.getStringExtra(NOME) ?: ""
-
-                            val intent =
-                                Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
-                                    putExtra(NOME, nome)
-                                    putExtra(RESULTADO, resultado.toString())
-                                }
-
-                            startActivity(intent)
-                        }
-                    }
-                }
-                respondido = false
-            }
-
-            // Volta para a tela inicial
-            closeBtn.setOnClickListener {
-                backToInitialActivity()
-            }
-        }
-
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -264,5 +236,4 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         val RESULTADO = "RESULTADO"
     }
-
 }

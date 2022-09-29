@@ -2,6 +2,7 @@ package br.edu.infnet.app_quiz_assessment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,9 @@ import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    val viewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,19 +23,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setup() {
+        setupObservers()
         configureButtons()
+    }
+
+    private fun setupObservers() {
+        viewModel.isLoading.observe(this) {
+            if (it == true) {
+                Toast.makeText(this, "Por favor, insira seu nome!", Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
+        }
     }
 
     private fun configureButtons() {
         binding.btnAvancar.setOnClickListener {
             if (binding.inputName.text.toString().isEmpty()) {
-                Toast.makeText(this, "Por favor, insira seu nome!", Toast.LENGTH_SHORT
-                )
-                    .show()
+                viewModel.setIsLoading(true)
             } else {
-                val intent = Intent(this, InitialActivity::class.java)
-                val nome = binding.inputName.text.toString()
-                intent.putExtra(NOME, nome)
+                val intent = Intent(this, InitialActivity::class.java).apply {
+                    val nome = binding.inputName.text.toString()
+                    putExtra(NOME, nome)
+                }
                 startActivity(intent)
             }
         }

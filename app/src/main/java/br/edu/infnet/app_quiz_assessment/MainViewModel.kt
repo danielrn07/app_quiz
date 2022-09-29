@@ -11,7 +11,7 @@ class MainViewModel: ViewModel() {
 
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun setIsNumero(value: Boolean) {
+    fun setIsLoading(value: Boolean) {
         _isLoading.postValue(value)
     }
 }
