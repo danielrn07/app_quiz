@@ -1,6 +1,7 @@
 package br.edu.infnet.app_quiz_assessment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
@@ -25,15 +26,21 @@ class ResultActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun setup() {
-
+        configureButtons()
 
         val resultado = intent.getStringExtra(QuestionsActivity.RESULTADO) ?: ""
         val nome = intent.getStringExtra(NOME) ?: ""
 
         binding.tvResult.text = "Você acertou $resultado questões!"
-        binding.tvName.text = "Olá $nome"
+        binding.tvName.text = "Parabéns $nome!"
     }
 
+    private fun configureButtons() {
+        binding.btnHome.setOnClickListener {
+            val intent = Intent(this, InitialActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
 
 }
