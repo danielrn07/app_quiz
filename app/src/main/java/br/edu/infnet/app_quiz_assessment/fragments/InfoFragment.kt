@@ -1,4 +1,4 @@
-package br.edu.infnet.app_quiz_assessment
+package br.edu.infnet.app_quiz_assessment.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -7,10 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.edu.infnet.app_quiz_assessment.databinding.CustomBottomSheetBinding
 import br.edu.infnet.app_quiz_assessment.databinding.FragmentInfoBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
-
 
 class InfoFragment : Fragment() {
 
@@ -46,6 +43,4 @@ class InfoFragment : Fragment() {
         val uri = Uri.parse("https://github.com/danielrn07")
         startActivity(Intent(Intent.ACTION_VIEW, uri))
     }
-
-
 }

@@ -1,15 +1,12 @@
-package br.edu.infnet.app_quiz_assessment
+package br.edu.infnet.app_quiz_assessment.models
 import br.edu.infnet.app_quiz_assessment.models.QuestionsAndOptions
 
 
 object Constants {
-    const val USER_NAME: String = "user_name"
-    const val TOTAL_QUESTIONS: String = "total_questions"
-    const val CORRECT_ANSWERS: String = "correct_answers"
     fun getQuestions(): ArrayList<QuestionsAndOptions> {
         val questionsList = ArrayList<QuestionsAndOptions>()
 
-        // 1
+        // Questão 1
         val que1 = QuestionsAndOptions(
             1,
             "De quem é a famosa frase “Penso, logo existo”?",
@@ -20,7 +17,7 @@ object Constants {
             3
         )
         questionsList.add(que1)
-        // 2
+        // Questão 2
         val que2 = QuestionsAndOptions(
             2,
             "De onde é a invenção do chuveiro elétrico?",
@@ -33,7 +30,7 @@ object Constants {
 
         questionsList.add(que2)
 
-        // 3
+        // Questão 3
         val que3 = QuestionsAndOptions(
             3,
             "Qual o nome do presidente do Brasil que ficou conhecido como Jango?",
@@ -46,7 +43,7 @@ object Constants {
 
         questionsList.add(que3)
 
-        // 4
+        // Questão 4
         val que4 = QuestionsAndOptions(
             4,
             "O que a palavra legend significa em português?",
@@ -59,7 +56,7 @@ object Constants {
 
         questionsList.add(que4)
 
-        // 5
+        // Questão 5
         val que5 = QuestionsAndOptions(
             5,
             "Qual o número mínimo de jogadores numa partida de futebol?",
@@ -72,7 +69,7 @@ object Constants {
 
         questionsList.add(que5)
 
-        // 6
+        // Questão 6
         val que6 = QuestionsAndOptions(
             6,
             "Quanto tempo a luz do Sol demora para chegar à Terra?",
@@ -85,7 +82,7 @@ object Constants {
 
         questionsList.add(que6)
 
-        // 7
+        // Questão 7
         val que7 = QuestionsAndOptions(
             7,
             "Qual personagem folclórico costuma ser agradado pelos caçadores com a oferta de fumo?",
@@ -98,7 +95,7 @@ object Constants {
 
         questionsList.add(que7)
 
-        // 8
+        // Questão 8
         val que8 = QuestionsAndOptions(
             8,
             "“It is six twenty\" ou \"twenty past six”. Que horas são em inglês?",
@@ -111,7 +108,7 @@ object Constants {
 
         questionsList.add(que8)
 
-        // 9
+        // Questão 9
         val que9 = QuestionsAndOptions(
             9,
             "Quem foi o primeiro homem a pisar na Lua?",
@@ -124,7 +121,7 @@ object Constants {
 
         questionsList.add(que9)
 
-        // 10
+        // Questão 10
         val que10 = QuestionsAndOptions(
             10,
             "Quais são os cromossomos que determinam o sexo masculino?",
@@ -137,6 +134,5 @@ object Constants {
 
         questionsList.add(que10)
         return questionsList
-
     }
 }

@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="br.edu.infnet.app_quiz_assessment.HomeFragment"
+        android:name="br.edu.infnet.app_quiz_assessment.fragments.HomeFragment"
         android:label="HomeFragment" />
 
     <fragment
         android:id="@+id/nav_rank"
-        android:name="br.edu.infnet.app_quiz_assessment.RankFragment"
+        android:name="br.edu.infnet.app_quiz_assessment.fragments.RankFragment"
         android:label="fragment_rank"
         tools:layout="@layout/fragment_rank" />
 
     <fragment
         android:id="@+id/nav_info"
-        android:name="br.edu.infnet.app_quiz_assessment.InfoFragment"
+        android:name="br.edu.infnet.app_quiz_assessment.fragments.InfoFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_info" />
 </navigation>

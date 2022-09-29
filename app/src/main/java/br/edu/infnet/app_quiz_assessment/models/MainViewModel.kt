@@ -1,4 +1,4 @@
-package br.edu.infnet.app_quiz_assessment
+package br.edu.infnet.app_quiz_assessment.models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -36,16 +36,6 @@
                 app:layout_constraintTop_toTopOf="parent"
 
                 />
-<!--            <Button-->
-<!--                android:id="@+id/tv_total_life"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:drawableLeft="@drawable/ic_heart"-->
-<!--                android:text="00"-->
-<!--                android:textColor="#e94e4e"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <ImageView
                 android:id="@+id/close_btn"
@@ -205,9 +195,9 @@
             android:id="@+id/next_btn"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/btn_shape"
             android:text="Próxima"
-            android:layout_marginBottom="16dp"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
