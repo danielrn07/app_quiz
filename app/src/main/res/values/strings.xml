@@ -1,6 +1,25 @@
 <resources>
-    <string name="app_name">app_quiz_assessment</string>
+    <string name="app_name">Quiz Infnet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="teste">Cont</string>
+    <string name="try_again">Tente novamente</string>
+    <string name="back_game">Não foi dessa vez…\nVolte ao início do jogo.</string>
+    <string name="tela_inicial">Tela inicial</string>
+    <string name="tentar_novamente">Tentar novamente</string>
+    <string name="lorem_ipsum">Lorem Ipsum</string>
+    <string name="proxima">Próxima</string>
+    <string name="escreva_nome">Escreva seu nome</string>
+    <string name="avancar">Avançar</string>
+    <string name="subtitulo_nome">Vamos nos divertir!</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="informacoes">Informações:</string>
+    <string name="info_app">Projeto desenvolvido por Daniel Nascimento.\nAnálise e Desenvolvimento de Sistemas - Instituto Infnet.</string>
+    <string name="linkedin">Linkedin</string>
+    <string name="github">GitHub</string>
+    <string name="ano">2022</string>
+    <string name="classificacao">Classificação:</string>
+    <string name="home">Home</string>
+    <string name="rank">Rank</string>
+    <string name="info">Info</string>
 </resources>

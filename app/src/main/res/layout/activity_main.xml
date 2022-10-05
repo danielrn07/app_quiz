@@ -16,7 +16,7 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="232dp"
         android:backgroundTint="@color/yellow"
-        android:hint="Escreva seu nome"
+        android:hint="@string/escreva_nome"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/yellow"
         app:endIconMode="clear_text"
@@ -40,14 +40,13 @@
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_avancar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_shape"
-        android:text="Avançar"
+        android:text="@string/avancar"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

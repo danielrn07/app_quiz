@@ -2,6 +2,7 @@ package br.edu.infnet.app_quiz_assessment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun configureButtons() {
         binding.btnAvancar.setOnClickListener {
+
             if (binding.inputName.text.toString().isEmpty()) {
                 viewModel.setIsCheck(true)
             } else {

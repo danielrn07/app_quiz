@@ -1,6 +1,4 @@
 package br.edu.infnet.app_quiz_assessment.models
-import br.edu.infnet.app_quiz_assessment.models.QuestionsAndOptions
-
 
 object Constants {
     fun getQuestions(): ArrayList<QuestionsAndOptions> {

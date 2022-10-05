@@ -1,5 +1,6 @@
 package br.edu.infnet.app_quiz_assessment.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -34,13 +35,30 @@ class InfoFragment : Fragment() {
         binding.btnGithub.setOnClickListener { showGithub() }
     }
 
+//    @SuppressLint("QueryPermissionsNeeded")
+//    private fun showLinkedIn() {
+//        val sendIntent = Intent(Intent.ACTION_VIEW)
+//        val title:Uri = Uri.parse("https://www.linkedin.com/in/danielrn07/")
+//        val chooser: Intent = Intent.createChooser(sendIntent, title.toString())
+//
+//        if (sendIntent.resolveActivity(requireActivity().packageManager) != null) {
+//            startActivity(chooser)
+//        }
+//    }
+
     private fun showLinkedIn() {
-        val uri = Uri.parse("https://www.linkedin.com/in/danielrn07/")
-        startActivity(Intent(Intent.ACTION_VIEW, uri))
+        try {
+            val uri = Uri.parse("https://www.linkedin.com/in/danielrn07/")
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        } catch (e: Error) {
+        }
     }
 
     private fun showGithub() {
-        val uri = Uri.parse("https://github.com/danielrn07")
-        startActivity(Intent(Intent.ACTION_VIEW, uri))
+        try {
+            val uri = Uri.parse("https://github.com/danielrn07")
+            startActivity(Intent(Intent.ACTION_VIEW, uri))
+        } catch (e: Error) {
+        }
     }
 }

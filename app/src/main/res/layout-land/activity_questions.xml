@@ -25,15 +25,14 @@
                 android:id="@+id/tv_total_life"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_heart"
                 android:gravity="center_vertical"
-                android:text=" 00"
+                android:text="@string/lorem_ipsum"
                 android:textColor="#e94e4e"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
-                />
+                app:drawableLeftCompat="@drawable/ic_heart" />
 
             <ImageView
                 android:id="@+id/close_btn"
@@ -71,7 +70,7 @@
                 android:id="@+id/tv_total_questions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="01/10"
+                android:text="@string/lorem_ipsum"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -112,7 +111,7 @@
                         android:id="@+id/tv_counter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10."
+                        android:text="@string/lorem_ipsum"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </RelativeLayout>
@@ -129,7 +128,7 @@
                         android:layout_height="wrap_content"
                         android:lineHeight="26dp"
                         android:paddingEnd="16dp"
-                        android:text="Mussum Ipsum, cacilds vidis litro abertis. Viva Forevis aptent taciti sociosqu ad litora torquent."
+                        android:text="@string/lorem_ipsum"
                         android:textColor="@color/white"
                         android:textSize="17sp" />
                 </RelativeLayout>
@@ -159,7 +158,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_option1"
-                tools:text="Lorem ipsum" />
+                tools:text="@string/lorem_ipsum" />
 
             <TextView
                 android:id="@+id/tv_option1"
@@ -174,7 +173,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Lorem ipsum" />
+                tools:text="@string/lorem_ipsum" />
 
             <TextView
                 android:id="@+id/tv_option2"
@@ -189,7 +188,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tv_option1"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Lorem ipsum" />
+                tools:text="@string/lorem_ipsum" />
 
             <TextView
                 android:id="@+id/tv_option4"
@@ -202,7 +201,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tv_option3"
                 app:layout_constraintTop_toBottomOf="@+id/tv_option2"
-                tools:text="Lorem ipsum" />
+                tools:text="@string/lorem_ipsum" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
