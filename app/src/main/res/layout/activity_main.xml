@@ -15,10 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="232dp"
-        android:backgroundTint="@color/yellow"
         android:hint="@string/escreva_nome"
         android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/yellow"
         app:endIconMode="clear_text"
         app:endIconTint="@color/white"
         app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -27,7 +25,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:placeholderTextColor="@color/yellow"
         app:startIconDrawable="@drawable/ic_person"
         app:startIconTint="@color/white"
         tools:ignore="MissingConstraints">
