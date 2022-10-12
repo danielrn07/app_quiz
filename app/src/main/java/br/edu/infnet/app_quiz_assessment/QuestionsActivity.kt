@@ -55,6 +55,15 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    fun counterLife() {
+        counterLife--
+        binding.tvTotalLife.text = " 0$counterLife"
+        if (counterLife <= 0) {
+            val intent = Intent(this, TryAgainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     private fun setupObservers() {
         viewModel.isCheck.observe(this) {
@@ -66,13 +75,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 if (question!!.correctAnswer != selectedOptionPosition) {
                     answerView(selectedOptionPosition, R.drawable.wrong_option)
 
-                    //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
-//                    counterLife--
-//                    binding.tvTotalLife.text = " 0$counterLife"
-//                    if (counterLife <= 0) {
-//                        val intent = Intent(this, TryAgainActivity::class.java)
-//                        startActivity(intent)
-//                    }
+                //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
+                counterLife()
                 } else {
                     resultado += 1
                 }
