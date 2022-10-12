@@ -55,24 +55,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/top">
 
-<!--            <TextView-->
-<!--                android:id="@+id/tv_test"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Tempo restante"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-
-<!--                />-->
-
             <TextView
-                android:id="@+id/tv_total_questions"
+                android:id="@+id/tv_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem_ipsum"
+                android:text="15"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -80,6 +67,19 @@
                 app:layout_constraintStart_toStartOf="parent"
 
                 app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_total_questions"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/lorem_ipsum"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -112,7 +112,7 @@
                     android:layout_weight="3.7">
 
                     <TextView
-                        android:id="@+id/tv_counter"
+                        android:id="@+id/tv_total_questions"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/lorem_ipsum"

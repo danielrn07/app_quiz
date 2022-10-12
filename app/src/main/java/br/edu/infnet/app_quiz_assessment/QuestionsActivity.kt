@@ -1,6 +1,7 @@
 package br.edu.infnet.app_quiz_assessment
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent.CanceledException
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -10,11 +11,14 @@ import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityQuestionsBinding
 import br.edu.infnet.app_quiz_assessment.models.Constants
 import br.edu.infnet.app_quiz_assessment.models.MainViewModel
 import br.edu.infnet.app_quiz_assessment.models.QuestionsAndOptions
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -47,25 +51,28 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         configureButtons()
         setupObservers()
         setQuestion()
-        pulaQuestao()
+        onClickNextQuestion()
+
     }
 
     @SuppressLint("SetTextI18n")
     private fun setupObservers() {
         viewModel.isCheck.observe(this) {
             if (it == true) {
+
                 val question = questionsList?.get(currentPosition - 1)
+
                 // Verifica se a resposta está errada
                 if (question!!.correctAnswer != selectedOptionPosition) {
                     answerView(selectedOptionPosition, R.drawable.wrong_option)
 
                     //Diminui uma vida no contador e volta para tela inicial quando a vida chegar a 0
-                    counterLife--
-                    binding.tvTotalLife.text = " 0$counterLife"
-                    if (counterLife <= 0) {
-                        val intent = Intent(this, TryAgainActivity::class.java)
-                        startActivity(intent)
-                    }
+//                    counterLife--
+//                    binding.tvTotalLife.text = " 0$counterLife"
+//                    if (counterLife <= 0) {
+//                        val intent = Intent(this, TryAgainActivity::class.java)
+//                        startActivity(intent)
+//                    }
                 } else {
                     resultado += 1
                 }
@@ -79,22 +86,22 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun pulaQuestao() {
-        binding.nextBtn.setOnClickListener {
-            if (selectedOptionPosition != -1) {
-                currentPosition++
-                when {
-                    currentPosition <= questionsList!!.size -> {
-                        setQuestion()
-                    }
-                    else -> {
-                        val nome = intent.getStringExtra(NOME) ?: ""
-                        val intent =
-                            Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
-                                putExtra(NOME, nome)
-                                putExtra(RESULTADO, resultado.toString())
-                            }
-                        startActivity(intent)
-                    }
+        finalizarCronometro()
+        if (selectedOptionPosition != -1) {
+            currentPosition++
+            when {
+                currentPosition <= questionsList!!.size -> {
+                    setQuestion()
+
+                }
+                else -> {
+                    val nome = intent.getStringExtra(NOME) ?: ""
+                    val intent =
+                        Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
+                            putExtra(NOME, nome)
+                            putExtra(RESULTADO, resultado.toString())
+                        }
+                    startActivity(intent)
                 }
             }
             respondido = false
@@ -116,6 +123,14 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             // Volta para a tela inicial
             closeBtn.setOnClickListener {
                 backToInitialActivity()
+            }
+        }
+    }
+
+    fun onClickNextQuestion() {
+        binding.nextBtn.setOnClickListener {
+            if (respondido) {
+                pulaQuestao()
             }
         }
     }
@@ -149,6 +164,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
+        iniciarCronometro()
         with(binding) {
             val question =
                 // Pega a pergunta da lista de acordo com a posição atual
@@ -157,8 +173,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             defaultOptionsView()
 
             // Contador de questões
-            tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex + 1}"
-            tvCounter.text = "$currentPosition. "
+            //tvTotalQuestions.text = "$currentPosition" + "/" + "${questionsList!!.lastIndex + 1}"
+            tvTotalQuestions.text = "$currentPosition. "
 
             questionContainer2.text = question.pergunta
             tvOption1.text = question.option1
@@ -166,7 +182,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             tvOption3.text = question.option3
             tvOption4.text = question.option4
         }
-
     }
 
     private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
@@ -230,6 +245,38 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     drawableView
                 )
             }
+        }
+    }
+
+    var job: CoroutineContext? = null
+
+
+    fun iniciarCronometro() {
+//        setupObservers()
+        var tempo = 15
+        job = lifecycleScope.launch() {
+            try {
+                withTimeout(16000) {
+
+                    while (true) {
+                        delay(1000)
+                        tempo--
+                        binding.tvCount?.text = tempo.toString()
+                    }
+                }
+            } catch (e: Exception) {
+                if (tempo <= 1) {
+                    pulaQuestao()
+                }
+            }
+        }
+        binding.tvCount?.text = "15"
+    }
+
+    fun finalizarCronometro() {
+        if (job?.isActive == true) {
+            job!!.cancel(CancellationException("Cancelled by user"))
+            job = null
         }
     }
 

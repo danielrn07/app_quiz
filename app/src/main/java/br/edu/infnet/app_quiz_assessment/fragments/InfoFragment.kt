@@ -46,13 +46,26 @@ class InfoFragment : Fragment() {
 //        }
 //    }
 
+
+//    private fun showLinkedIn() {
+//        try {
+//            val uri = Uri.parse("https://www.linkedin.com/in/danielrn07/")
+//            startActivity(Intent(Intent.ACTION_VIEW, uri))
+//        } catch (e: Error) {
+//        }
+//    }
+
+    @SuppressLint("QueryPermissionsNeeded")
     private fun showLinkedIn() {
-        try {
+        val sendIntent = Intent().apply {
             val uri = Uri.parse("https://www.linkedin.com/in/danielrn07/")
-            startActivity(Intent(Intent.ACTION_VIEW, uri))
-        } catch (e: Error) {
+            action = Intent.ACTION_VIEW
+        }
+        if (sendIntent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(sendIntent)
         }
     }
+
 
     private fun showGithub() {
         try {
