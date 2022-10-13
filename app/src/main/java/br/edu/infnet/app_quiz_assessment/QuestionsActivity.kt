@@ -271,6 +271,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             } catch (e: Exception) {
                 if (tempo <= 1) {
                     pulaQuestao()
+                    counterLife()
                 }
             }
         }
