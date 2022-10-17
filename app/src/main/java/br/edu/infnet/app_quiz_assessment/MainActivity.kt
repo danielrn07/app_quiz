@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
 import br.edu.infnet.app_quiz_assessment.models.MainViewModel
+import br.edu.infnet.app_quiz_assessment.utils.saveLoginToSharedPrefs
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.isCheck.observe(this) {
             if (it == true) {
                 Toast.makeText(
-                    this, "Por favor, insira seu nome!", Toast.LENGTH_SHORT
+                    this, "Por favor, digite seu nome!", Toast.LENGTH_SHORT
                 )
                     .show()
             }
@@ -43,21 +44,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun configureButtons() {
         binding.btnAvancar.setOnClickListener {
-
             if (binding.inputName.text.toString().isEmpty()) {
                 viewModel.setIsCheck(true)
             } else {
-                val intent = Intent(this, InitialActivity::class.java).apply {
-                    val nome = binding.inputName.text.toString()
-                    putExtra(NOME, nome)
-                }
+                val login = binding.inputName.text.toString()
+                saveLoginToSharedPrefs(login)
+                val intent = Intent(this, InitialActivity::class.java)
+
                 startActivity(intent)
             }
         }
-    }
-
-    companion object {
-        val NOME = "NOME"
     }
 }
 

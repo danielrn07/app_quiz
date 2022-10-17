@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityInitialBinding
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityMainBinding
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityResultBinding
+import br.edu.infnet.app_quiz_assessment.utils.getLoginFromSharedPrefs
 
 class ResultActivity : AppCompatActivity() {
 
@@ -26,13 +26,12 @@ class ResultActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun setup() {
+        binding.tvName.text = "Parabéns ${getLoginFromSharedPrefs()}"
+
         configureButtons()
 
         val resultado = intent.getStringExtra(QuestionsActivity.RESULTADO) ?: ""
-        val nome = intent.getStringExtra(NOME) ?: ""
-
         binding.tvResult.text = "Você acertou $resultado questões!"
-        binding.tvName.text = "Parabéns $nome!"
     }
 
     private fun configureButtons() {

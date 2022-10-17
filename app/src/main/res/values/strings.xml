@@ -22,4 +22,6 @@
     <string name="home">Home</string>
     <string name="rank">Rank</string>
     <string name="info">Info</string>
+    <string name="my_preference_name">Minhas Preferências</string>
+    <string name="name_key">Nome no sharedPreferences</string>
 </resources>

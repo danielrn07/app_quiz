@@ -12,7 +12,6 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import br.edu.infnet.app_quiz_assessment.MainActivity.Companion.NOME
 import br.edu.infnet.app_quiz_assessment.databinding.ActivityQuestionsBinding
 import br.edu.infnet.app_quiz_assessment.models.Constants
 import br.edu.infnet.app_quiz_assessment.models.MainViewModel
@@ -99,10 +98,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
                 }
                 else -> {
-                    val nome = intent.getStringExtra(NOME) ?: ""
                     val intent =
                         Intent(this@QuestionsActivity, ResultActivity::class.java).apply {
-                            putExtra(NOME, nome)
                             putExtra(RESULTADO, resultado.toString())
                         }
                     startActivity(intent)
